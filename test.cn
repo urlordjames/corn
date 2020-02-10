@@ -4,5 +4,9 @@ print ( 1i + 2i + 3i + 4i + 5i )
 print ( 123i + 377i )
 # should print 99
 print ( 9i + 90i )
+# should print 3
 var int dog = 3i
+print ( dog )
+# should print 66
+var int dog = 60i + 6i
 print ( dog )
