@@ -1,6 +1,8 @@
 # should print 15
-print(1i + 2i + 3i + 4i + 5i)
+print ( 1i + 2i + 3i + 4i + 5i )
 # should print 500
-print(123i + 377i)
+print ( 123i + 377i )
 # should print 99
-print(9i + 90i)
+print ( 9i + 90i )
+var int dog = 3i
+print ( dog )
