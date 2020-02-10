@@ -14,7 +14,7 @@ def lexate(filename):
 
     numbers = []
 
-    for i in range(0,9):
+    for i in range(0,10):
        numbers.append(str(i))
 
     tokenlist = masterlist.keys()
