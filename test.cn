@@ -1,0 +1,2 @@
+# should print 15
+print ( int1 + int2 + int3 + int4 + int5 )
