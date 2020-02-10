@@ -17,8 +17,8 @@ def lexate(filename):
             continue
         tokens = []
         for block in ln.split(" "):
-            if len(block) > 3 and block[0:3] == "int":
-                tokens.append(block[3:])
+            if len(block) > 1 and block[-1:] == "i":
+                tokens.append(block)
             else:
                 tokens.append(masterlist[block])
         cornparse.append(tokens)
