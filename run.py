@@ -41,4 +41,5 @@ def runate(filename, debug):
     for ln in exe:
         execute(ln)
 
-runate("test.cn", True)
+if __name__ == "__main__":
+    runate("test.cn", True)
