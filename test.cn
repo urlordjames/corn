@@ -5,8 +5,10 @@ print ( 123i + 377i )
 # should print 99
 print ( 9i + 90i )
 # should print 3
-var int dog = 3i
-print ( dog )
+var int dog1 = 3i
+print ( dog1 )
 # should print 66
-var int dog = 60i + 6i
-print ( dog )
+var int dog2 = 60i + 6i
+print ( dog2 )
+# should print 69
+print ( dog1 + dog2 )
