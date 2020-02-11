@@ -10,6 +10,13 @@ def runate(filename, debug):
     def num(n):
         return int(n[:-1])
 
+    def fixnums(num1, num2):
+        while not type(num1) == int:
+            num1 = execute(num1)
+        while not type(num2) == int:
+            num2 = execute(num2)
+        return num1, num2
+
     def execute(ln):
         assert ln is not None
         if type(ln) == int:
@@ -25,14 +32,15 @@ def runate(filename, debug):
             print(execute(ln[1]))
             return True
         if ln[0] == "intop":
-            num1 = ln[1]
-            while not type(num1) == int:
-                num1 = execute(num1)
-            num2 = ln[2]
-            while not type(num2) == int:
-                num2 = execute(num2)
+            num1, num2 = fixnums(ln[1], ln[2])
             assert type(num1) == type(num2) and type(num1) == int
-            return eval("num1 " + ln[3] + " num2")
+            return int(eval("num1 " + ln[3] + " num2"))
+        if ln[0] == ">" or ln[0] == "<":
+            num1, num2 = fixnums(ln[1], ln[2])
+            assert type(num1) == type(num2) and type(num1) == int
+            return bool(eval("num1 " + ln[0] + " num2"))
+            
+            
         if ln[0] == "asop":
             varlist.update({ln[1]: execute(ln[2])})
             return True

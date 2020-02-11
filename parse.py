@@ -3,6 +3,7 @@ from lex import lexate
 def parsate(filename):
     tklist = lexate(filename)
 
+    #TODO: add bool
     vartypes = {
         "int": "_int"
     }
@@ -13,6 +14,11 @@ def parsate(filename):
         "*": "*",
         "**": "**",
         "^": "**"
+    }
+
+    boolops = {
+        "gop": ">",
+        "lop": "<"
     }
     
     def parse(ln):
@@ -29,6 +35,8 @@ def parsate(filename):
             return [ln[0], parse(ln[2:endindex])]
         if ln[1] in intops:
             return ["intop", ln[0], parse(ln[2:]), intops[ln[1]]]
+        if ln[1] == "gop" or ln[1] == "lop":
+            return [boolops[ln[1]], ln[0], ln[2]]
         if ln[3] == "asop":
             return [ln[3], ln[2], parse(ln[4:])]
         return z
