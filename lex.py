@@ -15,7 +15,8 @@ def lexate(filename):
         "int": "int",
         "=": "asop",
         ">": "gop",
-        "<": "lop"
+        "<": "lop",
+        "==": "eop"
     }
 
     numbers = ["-"]

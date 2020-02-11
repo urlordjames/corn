@@ -18,7 +18,8 @@ def parsate(filename):
 
     boolops = {
         "gop": ">",
-        "lop": "<"
+        "lop": "<",
+        "eop": "=="
     }
     
     def parse(ln):
@@ -38,7 +39,7 @@ def parsate(filename):
         if ln[1] in intops:
             return ["intop", parse(ln[0]), parse(ln[2:]), intops[ln[1]]]
         if ln[1] in boolops:
-            return [boolops[ln[1]], parse(ln[0]), parse(ln[2:])]
+            return ["boolop", parse(ln[0]), parse(ln[2:]), boolops[ln[1]]]
         if ln[3] == "asop":
             return [ln[3], ln[2], parse(ln[4:])]
         return z

@@ -35,10 +35,10 @@ def runate(filename, debug):
             num1, num2 = fixnums(ln[1], ln[2])
             assert type(num1) == type(num2) and type(num1) == int
             return int(eval("num1 " + ln[3] + " num2"))
-        if ln[0] == ">" or ln[0] == "<":
+        if ln[0] == "boolop":
             num1, num2 = fixnums(ln[1], ln[2])
             assert type(num1) == type(num2) and type(num1) == int
-            return bool(eval("num1 " + ln[0] + " num2"))
+            return bool(eval("num1 " + ln[3] + " num2"))
             
             
         if ln[0] == "asop":
