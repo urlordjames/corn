@@ -12,3 +12,11 @@ var int dog2 = 60i + 6i
 print ( dog2 )
 # should print 69
 print ( dog1 + dog2 )
+# should print -63
+print ( dog1 - dog2 )
+# should print 30903154382632612361920641803529
+print ( dog1 ** dog2 )
+#should print 4
+print ( 2i * 3i - 1i )
+#should print -8
+print ( -5i + -3i )

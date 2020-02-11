@@ -10,12 +10,13 @@ def lexate(filename):
         "(": "fnop",
         ")": "fnend",
         "+": "+",
+        "-": "-",
         "var": "var",
         "int": "int",
         "=": "asop"
     }
 
-    numbers = []
+    numbers = ["-"]
 
     for i in range(0,10):
         numbers.append(str(i))

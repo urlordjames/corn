@@ -1,7 +1,9 @@
 from parse import parsate
 
-def runate(filename):
+def runate(filename, debug):
     exe = parsate(filename)
+    if debug:
+        print(exe)
 
     varlist = {}
 
@@ -22,7 +24,7 @@ def runate(filename):
         if ln[0] == "print":
             print(execute(ln[1]))
             return True
-        if ln[0] == "+":
+        if ln[0] == "intop":
             num1 = ln[1]
             while not type(num1) == int:
                 num1 = execute(num1)
@@ -30,7 +32,7 @@ def runate(filename):
             while not type(num2) == int:
                 num2 = execute(num2)
             assert type(num1) == type(num2) and type(num1) == int
-            return num1 + num2
+            return eval("num1 " + ln[3] + " num2")
         if ln[0] == "asop":
             varlist.update({ln[1]: execute(ln[2])})
             return True
@@ -39,4 +41,4 @@ def runate(filename):
     for ln in exe:
         execute(ln)
 
-runate("test.cn")
+runate("test.cn", True)

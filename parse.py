@@ -6,6 +6,14 @@ def parsate(filename):
     vartypes = {
         "int": "_int"
     }
+
+    intops = {
+        "+": "+",
+        "-": "-",
+        "*": "*",
+        "**": "**",
+        "^": "**"
+    }
     
     def parse(ln):
         z = []
@@ -19,8 +27,8 @@ def parsate(filename):
             while not ln[endindex] == "fnend":
                 endindex += 1
             return [ln[0], parse(ln[2:endindex])]
-        if ln[1] == "+":
-            return [ln[1], ln[0], parse(ln[2:])]
+        if ln[1] in intops:
+            return ["intop", ln[0], parse(ln[2:]), intops[ln[1]]]
         if ln[3] == "asop":
             return [ln[3], ln[2], parse(ln[4:])]
         return z
