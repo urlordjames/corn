@@ -7,8 +7,10 @@ def lexate(filename):
 
     masterlist = {
         "print": "print",
+        "jmp": "jmp",
         "(": "fnop",
         ")": "fnend",
+        ",": "sepop",
         "+": "+",
         "-": "-",
         "var": "var",
@@ -17,7 +19,9 @@ def lexate(filename):
         "=": "asop",
         ">": "gop",
         "<": "lop",
-        "==": "eop"
+        "==": "eop",
+        "true": True,
+        "false": False
     }
 
     numbers = ["-"]

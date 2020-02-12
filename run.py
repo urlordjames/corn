@@ -1,11 +1,13 @@
 from parse import parsate
 
+varlist = {}
+i = 0
+
 def runate(filename, debug):
+    global i
     exe = parsate(filename)
     if debug:
         print(exe)
-
-    varlist = {}
 
     def num(n):
         return int(n[:-1])
@@ -31,6 +33,15 @@ def runate(filename, debug):
         if ln[0] == "print":
             print(execute(ln[1]))
             return True
+        if ln[0] == "jmp":
+            global i
+            if ln[1][0]:
+                val = ln[1][1]
+                while not type(val) == int:
+                    val = execute(val)
+                i += val
+                return True
+            return False
         if ln[0] == "intop":
             num1, num2 = fixnums(ln[1], ln[2])
             assert type(num1) == type(num2) and type(num1) == int
@@ -43,8 +54,6 @@ def runate(filename, debug):
             varlist.update({ln[1]: execute(ln[2])})
             return True
         return False
-
-    i = 0
 
     while not i == len(exe):
         execute(exe[i])
