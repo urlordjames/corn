@@ -18,7 +18,6 @@ def parsate(filename):
     }
     
     def parse(ln):
-        print(ln)
         z = []
         if type(ln) == bool:
             return ln
