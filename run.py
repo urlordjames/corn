@@ -19,7 +19,7 @@ def runate(filename, debug):
 
     def execute(ln):
         assert ln is not None
-        if type(ln) == int:
+        if type(ln) == int or type(ln) == bool:
             return ln
         if type(ln) == list and len(ln) == 1:
             return execute(ln[0])
@@ -39,8 +39,6 @@ def runate(filename, debug):
             num1, num2 = fixnums(ln[1], ln[2])
             assert type(num1) == type(num2) and type(num1) == int
             return bool(eval("num1 " + ln[3] + " num2"))
-            
-            
         if ln[0] == "asop":
             varlist.update({ln[1]: execute(ln[2])})
             return True

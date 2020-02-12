@@ -3,11 +3,6 @@ from lex import lexate
 def parsate(filename):
     tklist = lexate(filename)
 
-    #TODO: add bool
-    vartypes = {
-        "int": "_int"
-    }
-
     intops = {
         "+": "+",
         "-": "-",

@@ -33,4 +33,5 @@ print ( dog1 > dog2 + 200i )
 print ( dog1 == dog2 )
 #should print True
 var int dog2 = 5i
-print ( dog1 == dog2 )
+var int corn = dog1 == dog2
+print ( corn )

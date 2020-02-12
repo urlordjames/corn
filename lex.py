@@ -13,6 +13,7 @@ def lexate(filename):
         "-": "-",
         "var": "var",
         "int": "int",
+        "bool": "bool",
         "=": "asop",
         ">": "gop",
         "<": "lop",
