@@ -46,8 +46,11 @@ def runate(filename, debug):
             return True
         return False
 
-    for ln in exe:
-        execute(ln)
+    i = 0
+
+    while not i == len(exe):
+        execute(exe[i])
+        i += 1
 
 if __name__ == "__main__":
     runate("test.cn", True)
