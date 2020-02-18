@@ -1,9 +1,7 @@
 from lex import lexate
 
-def parsate(filename, debug):
+def parsate(filename):
     tklist = lexate(filename)
-    if debug:
-        print(tklist)
 
     intops = {
         "+": "+",
@@ -16,12 +14,12 @@ def parsate(filename, debug):
     boolops = {
         "gop": ">",
         "lop": "<",
-        "eop": "=="
+        "eop": "==",
+        "andop": "and",
+        "orop": "or"
     }
     
     def parse(ln):
-        if debug:
-            print(ln)
         z = []
         if type(ln) == bool:
             return ln
@@ -38,7 +36,7 @@ def parsate(filename, debug):
                 endindex += 1
             return [ln[0], parse(ln[2:endindex])]
         if ln[1] == "sepop":
-            return [ln[0], ln[2:]]
+            return [ln[0], ln[2]]
         if ln[1] in intops:
             return ["intop", parse(ln[0]), parse(ln[2:]), intops[ln[1]]]
         if ln[1] in boolops:
