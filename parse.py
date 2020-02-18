@@ -16,7 +16,9 @@ def parsate(filename, debug):
     boolops = {
         "gop": ">",
         "lop": "<",
-        "eop": "=="
+        "eop": "==",
+        "andop": "and",
+        "orop": "or"
     }
     
     def parse(ln):

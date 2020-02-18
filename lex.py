@@ -20,6 +20,8 @@ def lexate(filename):
         ">": "gop",
         "<": "lop",
         "==": "eop",
+        "&&": "andop",
+        "||": "orop",
         "true": True,
         "false": False
     }
