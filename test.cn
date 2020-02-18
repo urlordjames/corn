@@ -39,7 +39,3 @@ print ( corn )
 jmp ( 1i == 1i , 1i )
 print ( 3i )
 print ( 4i )
-#should print True
-print ( true && 1i == 1i )
-#should print True
-print ( true || false )

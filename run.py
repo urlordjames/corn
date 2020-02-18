@@ -5,21 +5,23 @@ i = 0
 
 def runate(filename, debug):
     global i
-    exe = parsate(filename)
+    exe = parsate(filename, debug)
     if debug:
         print(exe)
 
     def num(n):
         return int(n[:-1])
 
-    def fixnums(num1, num2, validtypes):
-        while not type(num1) in validtypes:
+    def fixnums(num1, num2):
+        while not type(num1) == int:
             num1 = execute(num1)
-        while not type(num2) in validtypes:
+        while not type(num2) == int:
             num2 = execute(num2)
         return num1, num2
 
     def execute(ln):
+        if debug:
+            print(ln)
         assert ln is not None
         if type(ln) == int or type(ln) == bool:
             return ln
@@ -35,7 +37,10 @@ def runate(filename, debug):
             return True
         if ln[0] == "jmp":
             global i
-            if ln[1][0]:
+            condition = execute(ln[1][0])
+            while not type(condition) == bool:
+                condition = execute(condition)
+            if condition:
                 val = ln[1][1]
                 while not type(val) == int:
                     val = execute(val)
@@ -43,10 +48,12 @@ def runate(filename, debug):
                 return True
             return False
         if ln[0] == "intop":
-            num1, num2 = fixnums(ln[1], ln[2], [int])
+            num1, num2 = fixnums(ln[1], ln[2])
+            assert type(num1) == type(num2) and type(num1) == int
             return int(eval("num1 " + ln[3] + " num2"))
         if ln[0] == "boolop":
-            num1, num2 = fixnums(ln[1], ln[2], [int, bool])
+            num1, num2 = fixnums(ln[1], ln[2])
+            assert type(num1) == type(num2) and type(num1) == int
             return bool(eval("num1 " + ln[3] + " num2"))
         if ln[0] == "asop":
             varlist.update({ln[1]: execute(ln[2])})
