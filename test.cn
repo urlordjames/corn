@@ -36,6 +36,6 @@ var int dog2 = 5i
 var int corn = dog1 == dog2
 print ( corn )
 #should print 4
-jmp ( true , 1i )
+jmp ( 1i == 1i , 1i )
 print ( 3i )
 print ( 4i )
